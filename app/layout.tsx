@@ -20,8 +20,25 @@ export const metadata: Metadata = {
     google: "4z_ZRwnWTobnfxVBUcXJqH3GzS6duONHQQFtIKGxXx8",
   },
   icons: {
-    icon: "portfolio.png",
-  }
+    icon: "/portfolio.png", // Added forward slash for better pathing
+  },
+  // --- ADDED OPEN GRAPH SECTION BELOW ---
+  openGraph: {
+    title: "Pavan Kumar S | Robotics & AI Portfolio",
+    description: "Specializing in Autonomous Agents and Intelligent Systems.",
+    url: "https://myportfolio-two-lemon-22.vercel.app/", 
+    siteName: "Pavan Kumar S Portfolio",
+    images: [
+      {
+        url: "/opengraph-image.png", // Make sure this image is in your /public folder
+        width: 1200,
+        height: 630,
+        alt: "Pavan Kumar S Robotics Portfolio Preview",
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -31,9 +48,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <meta name="google-site-verification" content="4z_ZRwnWTobnfxVBUcXJqH3GzS6duONHQQFtIKGxXx8" />
-      </head>
+      {/* You can remove the manual <head> meta tag now as it's in the metadata object above */}
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
