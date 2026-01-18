@@ -1,11 +1,13 @@
 'use server'
 import db from '@/lib/db';
+import { sql } from '@vercel/postgres';
+import { revalidatePath } from 'next/cache';
 
 export async function sendContactForm(formData: FormData) {
-  const name = formData.get('name')
-  const email = formData.get('email')
-  const message = formData.get('message')
-
+    const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
+    const message = formData.get('message') as string;
+    
   // Validation
   if (!name || !email || !message) {
     return { success: false, message: 'Please fill in all fields.' }
@@ -19,19 +21,25 @@ export async function sendContactForm(formData: FormData) {
   console.log('-----------------------------')
 
   // Simulator delay to look cool
-  await new Promise(resolve => setTimeout(resolve, 1000))
-
+  await sql`
+  INSERT INTO messages (name, email, message)
+  VALUES (${name}, ${email}, ${message});
+`;
   try {
-    // Insert data into the SQLite database
-    const stmt = db.prepare('INSERT INTO messages (name, email, message) VALUES (?, ?, ?)');
-    stmt.run(name, email, message);
+    // Vercel Postgres uses backticks (`) and ${variable} 
+    // It automatically handles security (SQL Injection) for you.
+    await sql`
+      INSERT INTO messages (name, email, message)
+      VALUES (${name}, ${email}, ${message});
+    `;
 
-    console.log(`✅ Success: Message from ${name} saved to local DB.`);
+    // This clears the cache so the new message shows up if you have a list
+    revalidatePath('/'); 
     
-    return { success: true, message: 'Your message has been saved locally!' };
+    return { success: true };
   } catch (error) {
     console.error('Database Error:', error);
-    return { success: false, message: 'Failed to save message. Please try again.' };
+    return { success: false, error: 'Failed to send message.' };
   }
 
 
