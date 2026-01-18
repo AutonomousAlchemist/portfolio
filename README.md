@@ -1,63 +1,42 @@
-# 🌐 The Intelligent Portfolio Engine 
-> **A High-Performance personal identity system built with Next.js 15, Tailwind CSS, and Vercel Analytics.**
+# 🏗️ The Portfolio Engine: Technical Specification
+> **A high-performance personal branding system engineered with Next.js 15.**
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=000000&height=200&section=header&text=Pavan%20Kumar%20S&fontSize=70&fontColor=ffffff" />
-</p>
-
-<p align="center">
-  <a href="https://myportfolio-two-lemon-22.vercel.app/">
-    <img src="https://img.shields.io/badge/Live_Demo-View_Website-brightgreen?style=for-the-badge&logo=vercel" />
-  </a>
-  <a href="https://www.linkedin.com/in/pavan-kumar-s-3b5b6b1b5">
-    <img src="https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin" />
-  </a>
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=30&pause=1000&color=00D1FF&center=true&vCenter=true&width=700&lines=NEXT.JS+15+ARCHITECTURE;SEO+ENGINEERING;PERFORMANCE+OPTIMIZATION;DATA-DRIVEN+ANALYTICS" alt="Typing SVG" />
 </p>
 
 ---
 
-## 🛠 Tech Stack & Core Competencies
+### 🔬 Core Technology Stack
 
-### **💻 Software Engineering**
-<p align="left">
-  <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=nextjs,react,ts,tailwind,vercel,github,figma,framer&perline=8" />
-  </a>
-</p>
-
-### **🤖 Robotics & AI Systems**
-<p align="left">
-  <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=py,cpp,linux,raspberrypi,arduino,opencv,codepen&perline=8" />
-  </a>
-</p>
-
-### **🛠 Specialized Hardware & Protocols**
-![BLE](https://img.shields.io/badge/Bluetooth_LE-0082FC?style=for-the-badge&logo=bluetooth&logoColor=white)
-![Fall Detection](https://img.shields.io/badge/Fall_Detection_AI-FF4B2B?style=for-the-badge&logo=sensortower&logoColor=white)
-![Alsamixer](https://img.shields.io/badge/Alsamixer_Audio-7D8285?style=for-the-badge&logo=linux-containers&logoColor=white)
-![Socket.io](https://img.shields.io/badge/Real--Time_Data-010101?style=for-the-badge&logo=socket.io&logoColor=white)
+| Layer | Technology | Engineering Purpose |
+| :--- | :--- | :--- |
+| **Framework** | <kbd>Next.js 15</kbd> | App Router, Server Components, and sub-second routing. |
+| **Language** | <kbd>TypeScript</kbd> | Type-safety for robust, error-free component architecture. |
+| **Styling** | <kbd>Tailwind CSS</kbd> | Atomic CSS for minimal bundle size and responsive design. |
+| **Animations** | <kbd>Framer Motion</kbd> | High-performance, hardware-accelerated UI transitions. |
+| **Analytics** | <kbd>Vercel Analytics</kbd> | Real-time monitoring of visitor behavior and conversion. |
 
 ---
 
-## 🚀 The Mission
-This isn't just a portfolio; it's a **Technical Engine**. Developed to bridge the gap between complex Robotics/AI projects and a seamless web experience, this project serves as my digital headquarters for 2026.
+### ⚙️ Systems Engineering Highlights
 
-### ⚡ Key Features
-* **Fall Detection Integration:** Logic designed for elderly care monitoring using real-time sensor data.
-* **Audio Engineering:** Configured Linux-based audio pipelines using **Alsamixer** for robot-human interaction.
-* **OpenCV Vision:** Real-time perception and image processing optimized for Raspberry Pi.
-* **Connectivity:** Low-energy data transmission via **BLE** (Bluetooth Low Energy).
+#### 🏎️ <span style="color: #00D1FF;">Performance & Core Web Vitals</span>
+* **Image Optimization:** Leveraging `next/image` with **AVIF** support for 30% smaller payloads.
+* **Code Splitting:** Automatic chunking of JS to ensure the main thread stays idle.
+* **Geist Fonts:** Utilizing variable fonts to reduce layout shift (CLS).
+
+#### 🔍 <span style="color: #00D1FF;">SEO & Machine Readability</span>
+* **Dynamic Sitemaps:** Automated generation via `sitemap.ts`.
+* **Metadata API:** Structured OpenGraph for high-impact social sharing.
+* **Robots.txt:** Explicit crawling instructions for Googlebot.
 
 ---
 
-## 🏗 System Architecture
-The website follows a modern "Edge-First" architecture to ensure sub-second loading times worldwide.
+### 📂 Repository Blueprint
 
-```mermaid
-graph LR
-    A[User Browser] -->|Requests| B(Vercel Edge Network)
-    B --> C{Next.js 15 Core}
-    C -->|Fetch| D[Asset Optimization]
-    C -->|Analytics| E[Vercel DB]
-    C -->|Render| A
+```bash
+├── app/
+│   ├── layout.tsx       # Root configuration (Metadata & Analytics)
+│   ├── sitemap.ts       # Automated SEO Indexing
+│   └── next.config.ts   # Edge Runtime & Image optimizations
