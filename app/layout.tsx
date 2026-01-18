@@ -20,9 +20,8 @@ export const metadata: Metadata = {
     google: "4z_ZRwnWTobnfxVBUcXJqH3GzS6duONHQQFtIKGxXx8",
   },
   icons: {
-    icon: "/portfolio.png", // Added forward slash for better pathing
+    icon: "/portfolio.png",
   },
-  // --- ADDED OPEN GRAPH SECTION BELOW ---
   openGraph: {
     title: "Pavan Kumar S | Robotics & AI Portfolio",
     description: "Specializing in Autonomous Agents and Intelligent Systems.",
@@ -30,7 +29,7 @@ export const metadata: Metadata = {
     siteName: "Pavan Kumar S Portfolio",
     images: [
       {
-        url: "/opengraph-image.png", // Make sure this image is in your /public folder
+        url: "/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "Pavan Kumar S Robotics Portfolio Preview",
@@ -46,9 +45,32 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Create the structured data object
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Pavan Kumar S",
+    "url": "https://myportfolio-two-lemon-22.vercel.app/",
+    "sameAs": [
+      "https://www.linkedin.com/in/pavan-kumar-s-3b5b6b1b5", // REPLACE with your actual LinkedIn URL
+      "https://github.com/your-username" // REPLACE with your actual GitHub URL
+    ],
+    "jobTitle": "Robotics & AI Student",
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Bangalore Institute of Technology"
+    }
+  };
+
   return (
     <html lang="en">
-      {/* You can remove the manual <head> meta tag now as it's in the metadata object above */}
+      <head>
+        {/* This script helps Google link your LinkedIn and Website together */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
