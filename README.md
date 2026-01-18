@@ -1,70 +1,63 @@
-# 🌐 The Intelligent Portfolio Engine
-> **A High-Performance, SEO-Optimized Digital Identity built with Next.js 15 & AI.**
+# 🌐 The Intelligent Portfolio Engine 
+> **A High-Performance personal identity system built with Next.js 15, Tailwind CSS, and Vercel Analytics.**
 
-![System Banner](public/opengraph-image.png)
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=000000&height=200&section=header&text=Pavan%20Kumar%20S&fontSize=70&fontColor=ffffff" />
+</p>
 
-## 🎯 The Objective
-To engineer a portfolio that doesn't just display data, but acts as a **Lead Generation Machine**. This project explores the intersection of **Core Web Vitals**, **Structured Data (JSON-LD)**, and **Modern React Patterns** to outrank high-authority domains (like LinkedIn) in personal search results.
-
----
-
-## 🛠 Engineering Stack
-
-| Layer | Technology | Purpose |
-| :--- | :--- | :--- |
-| **Framework** | Next.js 15 (App Router) | Server-side rendering & optimized routing. |
-| **Styling** | Tailwind CSS | Utility-first design for 100% responsive layouts. |
-| **Analytics** | Vercel Analytics | Real-time traffic monitoring & event tracking. |
-| **SEO** | JSON-LD & OpenGraph | Building a machine-readable identity for Google. |
-| **Font** | Geist & Geist Mono | High-legibility typography for a "developer" aesthetic. |
+<p align="center">
+  <a href="https://myportfolio-two-lemon-22.vercel.app/">
+    <img src="https://img.shields.io/badge/Live_Demo-View_Website-brightgreen?style=for-the-badge&logo=vercel" />
+  </a>
+  <a href="https://www.linkedin.com/in/pavan-kumar-s-3b5b6b1b5">
+    <img src="https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin" />
+  </a>
+</p>
 
 ---
 
-## ⚡ Key Technical Features
+## 🛠 Tech Stack & Core Competencies
 
-### 1. SEO Architecture (The "LinkedIn Killer")
-The site is engineered to compete with LinkedIn for the #1 spot on Google.
-* **JSON-LD Schema:** Implemented `Person` schema to link this domain with existing professional social profiles.
-* **Metadata API:** Dynamic metadata generation for individual project routes to ensure unique search snippets.
-* **Automated Sitemaps:** Uses `sitemap.ts` to tell Google precisely how to crawl the site.
+### **💻 Software Engineering**
+<p align="left">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=nextjs,react,ts,tailwind,vercel,github,figma,framer&perline=8" />
+  </a>
+</p>
 
-### 2. Performance Engineering
-* **AVIF Image Compression:** Images are served in AVIF format via the Next.js Image component, reducing payload size by ~20% compared to WebP.
-* **Zero Layout Shift (CLS):** Every element is sized to prevent jumping during load, ensuring a smooth "Mobile First" experience.
-* **Lighthouse Score:** Targeted **90+** across all categories.
+### **🤖 Robotics & AI Systems**
+<p align="left">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=py,cpp,linux,raspberrypi,arduino,opencv,codepen&perline=8" />
+  </a>
+</p>
 
-### 3. Vercel Edge Integration
-Utilizes Vercel's global edge network to serve content from the server closest to the recruiter, slashing Time to First Byte (TTFB).
+### **🛠 Specialized Hardware & Protocols**
+![BLE](https://img.shields.io/badge/Bluetooth_LE-0082FC?style=for-the-badge&logo=bluetooth&logoColor=white)
+![Fall Detection](https://img.shields.io/badge/Fall_Detection_AI-FF4B2B?style=for-the-badge&logo=sensortower&logoColor=white)
+![Alsamixer](https://img.shields.io/badge/Alsamixer_Audio-7D8285?style=for-the-badge&logo=linux-containers&logoColor=white)
+![Socket.io](https://img.shields.io/badge/Real--Time_Data-010101?style=for-the-badge&logo=socket.io&logoColor=white)
 
 ---
 
-## 🧬 Project Structure
+## 🚀 The Mission
+This isn't just a portfolio; it's a **Technical Engine**. Developed to bridge the gap between complex Robotics/AI projects and a seamless web experience, this project serves as my digital headquarters for 2026.
 
-```bash
-├── app/
-│   ├── layout.tsx       # The "Brain": Metadata, Analytics, and Global Styles
-│   ├── page.tsx         # The "Face": Main landing with Framer Motion animations
-│   ├── sitemap.ts       # The "Map": Dynamic XML generator for Google
-│   └── robots.ts        # The "Gatekeeper": Search engine instructions
-├── public/
-│   └── portfolio.png    # Optimized branding assets
-└── tailwind.config.ts   # Design tokens & theme configuration//localhost:3000](http://localhost:3000) with your browser to see the result.
+### ⚡ Key Features
+* **Fall Detection Integration:** Logic designed for elderly care monitoring using real-time sensor data.
+* **Audio Engineering:** Configured Linux-based audio pipelines using **Alsamixer** for robot-human interaction.
+* **OpenCV Vision:** Real-time perception and image processing optimized for Raspberry Pi.
+* **Connectivity:** Low-energy data transmission via **BLE** (Bluetooth Low Energy).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🏗 System Architecture
+The website follows a modern "Edge-First" architecture to ensure sub-second loading times worldwide.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```mermaid
+graph LR
+    A[User Browser] -->|Requests| B(Vercel Edge Network)
+    B --> C{Next.js 15 Core}
+    C -->|Fetch| D[Asset Optimization]
+    C -->|Analytics| E[Vercel DB]
+    C -->|Render| A
