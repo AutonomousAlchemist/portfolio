@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { personalInfo, skills, projects, experience, education, stats, certifications } from "./data";
-import { sendContactForm } from "./actions";
+import { submitContactForm } from './actions';
 import { Linkedin, Mail, Github, FileText, Send, Terminal, Award, ChevronDown, Loader2 } from "lucide-react";
 
 export default function Portfolio() {
@@ -465,7 +465,7 @@ export default function Portfolio() {
             action={async (formData) => {
               setIsPending(true); // 1. Start loading
               try {
-                const result = await sendContactForm(formData);
+                const result = await submitContactForm(formData);
                 if (result.success) {
                   alert(result.message);
                   (document.getElementById("contact-form") as HTMLFormElement).reset();

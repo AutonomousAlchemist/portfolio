@@ -1,9 +1,6 @@
-//import db from '@/lib/db';
-//import { sql } from '@vercel/postgres';
-//import { revalidatePath } from 'next/cache';
 'use server'
 
-import pool from '@/lib/db'; // Make sure this name matches
+import sql from '@/lib/db'; // This is the neon() function we exported
 import { revalidatePath } from 'next/cache';
 
 export async function submitContactForm(formData: FormData) {
@@ -12,52 +9,17 @@ export async function submitContactForm(formData: FormData) {
   const message = formData.get('message') as string;
 
   try {
-    // This is where you were getting the "Cannot find name 'pool'" error
-    await pool.sql`
-      INSERT INTO messages (name, email, message)
-      VALUES (${name}, ${email}, ${message});
-    `;
-     
-    return { success: true };
+    await sql`INSERT INTO ...`;
+    
+    return { 
+      success: true, 
+      message: "Message sent successfully!" // Add this line
+    };
   } catch (error) {
-    console.error('Database Error:', error);
-    return { success: false };
+    console.error(error);
+    return { 
+      success: false, 
+      message: "Something went wrong. Please try again." // Add this line
+    };
   }
 }
-  // Validation
-//  if (!name || !email || !message) {
-//    return { success: false, message: 'Please fill in all fields.' }
-//  }
-
-  // HERE IS WHERE YOU WOULD CONNECT TO AN EMAIL SERVICE
-  // For now, we will simulate a successful send so you can test the UI.
-//  console.log('--- NEW MESSAGE RECEIVED ---')
-//  console.log(`From: ${name} (${email})`)
-//  console.log(`Message: ${message}`)
-//  console.log('-----------------------------')
-
-  // Simulator delay to look cool
-//  await sql`
-//  INSERT INTO messages (name, email, message)
-//  VALUES (${name}, ${email}, ${message});
-//`;
-//  try {
-    // Vercel Postgres uses backticks (`) and ${variable} 
-    // It automatically handles security (SQL Injection) for you.
-//    await sql`
-//      INSERT INTO messages (name, email, message)
-//      VALUES (${name}, ${email}, ${message});
-//    `;
-
-    // This clears the cache so the new message shows up if you have a list
-//    revalidatePath('/'); 
-    
-//    return { success: true };
-//  } catch (error) {
-//    console.error('Database Error:', error);
-//    return { success: false, error: 'Failed to send message.' };
-//  }
-
-
-//  return { success: true, message: 'Message sent successfully!' }
-//}

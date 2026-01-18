@@ -1,8 +1,22 @@
-import { createPool } from '@vercel/postgres';
+import { neon } from '@neondatabase/serverless';
 
-// This forces the use of the pooled connection
-const pool = createPool({
-  connectionString: process.env.POSTGRES_URL,
-});
+// This driver works with ANY Neon/Vercel URL, even without -pooler
+const sql = neon(process.env.POSTGRES_URL!);
 
-export default pool;
+export async function ensureTableExists() {
+  try {
+    await sql`
+      CREATE TABLE IF NOT EXISTS messages (
+        id SERIAL PRIMARY KEY,
+        name TEXT NOT NULL,
+        email TEXT NOT NULL,
+        message TEXT NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );
+    `;
+  } catch (error) {
+    console.error("Table creation failed:", error);
+  }
+}
+
+export default sql;
