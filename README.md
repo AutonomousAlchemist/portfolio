@@ -1,7 +1,7 @@
 # 🌐 The Intelligent Portfolio Engine
 > **A High-Performance, SEO-Optimized Digital Identity built with Next.js 15 & AI.**
 
-![System Banner](https://raw.githubusercontent.com/username/repo/main/public/opengraph-image.png)
+![System Banner](https://raw.githubusercontent.com/AutonomousAlchemist/repo/main/public/opengraph-image.png)
 
 ## 🎯 The Objective
 To engineer a portfolio that doesn't just display data, but acts as a **Lead Generation Machine**. This project explores the intersection of **Core Web Vitals**, **Structured Data (JSON-LD)**, and **Modern React Patterns** to outrank high-authority domains (like LinkedIn) in personal search results.
