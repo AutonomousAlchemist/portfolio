@@ -1,4 +1,3 @@
-'use server'
 //import db from '@/lib/db';
 //import { sql } from '@vercel/postgres';
 //import { revalidatePath } from 'next/cache';
@@ -18,8 +17,7 @@ export async function submitContactForm(formData: FormData) {
       INSERT INTO messages (name, email, message)
       VALUES (${name}, ${email}, ${message});
     `;
-
-    revalidatePath('/'); 
+     
     return { success: true };
   } catch (error) {
     console.error('Database Error:', error);
