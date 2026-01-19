@@ -30,18 +30,6 @@ export default function Portfolio() {
   }, []);
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50 text-gray-900 selection:bg-cyan-400 selection:text-white font-sans">
-      {/* ADD THE STATUS BAR HERE */}
-      <div className="w-full bg-gray-900 text-[10px] text-cyan-400 py-1 px-4 flex justify-between font-mono sticky top-0 z-[100] border-b border-cyan-900/50">
-        <div className="flex items-center gap-2">
-          <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse"></span>
-          <span>SYSTEM: OPERATIONAL</span>
-        </div>
-        <span className="hidden md:inline uppercase tracking-widest">Core Architecture: Next.js + Neon + Gemini</span>
-        <div className="flex gap-4">
-          <span className="hidden sm:inline">LOC: BENGALURU, IN</span>
-          <span>LATENCY: 24MS</span>
-        </div>
-      </div>
       {/* --- HERO SECTION --- */}
       <section className="h-screen flex flex-col justify-center items-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-50/50 via-white to-blue-50/50" />
