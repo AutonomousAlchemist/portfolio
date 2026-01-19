@@ -90,7 +90,7 @@ export default function Portfolio() {
         >
           <div className="mb-6 relative inline-block">
             <div className="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-cyan-500/50 overflow-hidden mx-auto shadow-[0_0_30px_rgba(6,182,212,0.4)] ring-4 ring-cyan-200/50">
-              <img src="/profile.JPG" alt="Pavan Kumar S" className="w-full h-full object-cover" />
+              <img src="/profile.png" alt="Pavan Kumar S" className="w-full h-full object-cover" />
             </div>
           </div>
           
