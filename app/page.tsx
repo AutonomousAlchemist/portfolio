@@ -1,13 +1,15 @@
 "use client";
 import { useState,useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion,AnimatePresence } from "framer-motion";
 import { personalInfo, skills, projects, experience, education, stats, certifications } from "./data";
 import { submitContactForm } from './actions';
 import { Linkedin, Mail, Github, FileText, Send, Terminal, Award, ChevronDown, Loader2 } from "lucide-react";
 
+
 export default function Portfolio() {
   const [isPending, setIsPending] = useState(false);
   const [showScrollButton, setShowScrollButton] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   useEffect(() => {
     // 1. Fix: Scroll to top on Refresh
@@ -552,6 +554,52 @@ export default function Portfolio() {
       >
         <ChevronDown className="w-6 h-6 rotate-180 group-hover:-translate-y-1 transition-transform" />
       </motion.button>
+      <AnimatePresence>
+        {showSuccess && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[200] flex items-center justify-center bg-gray-900/60 backdrop-blur-sm px-4"
+          >
+            <motion.div
+              initial={{ scale: 0.8, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.8, y: 20 }}
+              className="bg-white border-2 border-cyan-500 rounded-2xl p-8 max-w-sm w-full text-center shadow-[0_0_50px_rgba(6,182,212,0.3)]"
+            >
+              <div className="relative mx-auto w-20 h-20 mb-6">
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                  className="absolute inset-0 border-4 border-dashed border-cyan-500 rounded-full"
+                />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ type: "spring", damping: 12, stiffness: 200, delay: 0.2 }}
+                  >
+                    <Send className="w-10 h-10 text-cyan-600" />
+                  </motion.div>
+                </div>
+              </div>
+              
+              <h3 className="text-2xl font-bold text-gray-900 mb-2 font-mono">DATA_TRANSMITTED</h3>
+              <p className="text-gray-600 text-sm">
+                Your message has been successfully routed to Pavan neural network. 
+              </p>
+              
+              <motion.div 
+                initial={{ width: 0 }}
+                animate={{ width: "100%" }}
+                transition={{ duration: 2.8 }}
+                className="h-1 bg-cyan-500 mt-6 rounded-full opacity-50"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <footer className="py-6 text-center text-gray-500 text-sm bg-white border-t border-gray-200">
         © 2026 Pavan Kumar S. Built with Next.js.
