@@ -1,13 +1,18 @@
-import { neon } from '@neondatabase/serverless';
+import { Pool } from 'pg';
 
-// Prioritize DATABASE_URL as it's usually the direct connection Neon prefers
-const connectionString = process.env.DATABASE_URL || process.env.POSTGRES_URL;
+const connectionString = process.env.DATABASE_URL;
 
-if (!connectionString) {
-  throw new Error("❌ No database connection string found in environment variables.");
-}
+const pool = new Pool({
+  connectionString,
+  ssl: {
+    rejectUnauthorized: false // Required for most cloud providers
+  }
+});
 
-// Initialize the neon client
-const sql = neon(connectionString);
+// Create a helper that matches your previous 'sql' usage
+const sql = async (query: string, params: any[] = []) => {
+  const res = await pool.query(query, params);
+  return res.rows;
+};
 
 export default sql;
