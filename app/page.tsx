@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { motion } from "framer-motion";
 import { personalInfo, skills, projects, experience, education, stats, certifications } from "./data";
 import { submitContactForm } from './actions';
@@ -7,9 +7,41 @@ import { Linkedin, Mail, Github, FileText, Send, Terminal, Award, ChevronDown, L
 
 export default function Portfolio() {
   const [isPending, setIsPending] = useState(false);
+  const [showScrollButton, setShowScrollButton] = useState(false);
+
+  useEffect(() => {
+    // 1. Fix: Scroll to top on Refresh
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+
+    // 2. Logic for floating "Go to Top" button visibility
+    const handleScroll = () => {
+      if (window.scrollY > 400) {
+        setShowScrollButton(true);
+      } else {
+        setShowScrollButton(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50 text-gray-900 selection:bg-cyan-400 selection:text-white font-sans">
-      
+      {/* ADD THE STATUS BAR HERE */}
+      <div className="w-full bg-gray-900 text-[10px] text-cyan-400 py-1 px-4 flex justify-between font-mono sticky top-0 z-[100] border-b border-cyan-900/50">
+        <div className="flex items-center gap-2">
+          <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse"></span>
+          <span>SYSTEM: OPERATIONAL</span>
+        </div>
+        <span className="hidden md:inline uppercase tracking-widest">Core Architecture: Next.js + Neon + Gemini</span>
+        <div className="flex gap-4">
+          <span className="hidden sm:inline">LOC: BENGALURU, IN</span>
+          <span>LATENCY: 24MS</span>
+        </div>
+      </div>
       {/* --- HERO SECTION --- */}
       <section className="h-screen flex flex-col justify-center items-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-50/50 via-white to-blue-50/50" />
@@ -522,6 +554,16 @@ export default function Portfolio() {
           </form>
         </div>
       </section>
+
+      <motion.button
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: showScrollButton ? 1 : 0, scale: showScrollButton ? 1 : 0 }}
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        className="fixed bottom-8 right-8 p-4 bg-cyan-600 text-white rounded-full shadow-2xl z-50 hover:bg-cyan-700 transition-colors group"
+        aria-label="Scroll to top"
+      >
+        <ChevronDown className="w-6 h-6 rotate-180 group-hover:-translate-y-1 transition-transform" />
+      </motion.button>
 
       <footer className="py-6 text-center text-gray-500 text-sm bg-white border-t border-gray-200">
         © 2026 Pavan Kumar S. Built with Next.js.
