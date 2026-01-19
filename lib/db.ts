@@ -1,18 +1,16 @@
-import { Pool } from 'pg';
+import { neon } from '@neondatabase/serverless';
 
-const connectionString = process.env.DATABASE_URL;
+// Pull from the variable you set in Vercel/Local
+const connectionString = process.env.DATABASE_URL || process.env.POSTGRES_URL;
 
-const pool = new Pool({
-  connectionString,
-  ssl: {
-    rejectUnauthorized: false // Required for most cloud providers
-  }
-});
+if (!connectionString) {
+  throw new Error("❌ Database URL is missing. Check your environment variables!");
+}
 
-// Create a helper that matches your previous 'sql' usage
-const sql = async (query: string, params: any[] = []) => {
-  const res = await pool.query(query, params);
-  return res.rows;
-};
+// Ensure it's a Neon URL, not Prisma
+if (connectionString.includes('prisma.io')) {
+  throw new Error("❌ You are still using a Prisma URL with a Neon driver!");
+}
 
+const sql = neon(connectionString);
 export default sql;
