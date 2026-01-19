@@ -489,8 +489,9 @@ export default function Portfolio() {
               try {
                 const result = await submitContactForm(formData);
                 if (result.success) {
-                  alert(result.message);
+                  setShowSuccess(true);
                   (document.getElementById("contact-form") as HTMLFormElement).reset();
+                  setTimeout(() => setShowSuccess(false), 5000);
                 } else {
                   alert("Error: " + result.message);
                 }
@@ -556,16 +557,17 @@ export default function Portfolio() {
       </motion.button>
       <AnimatePresence>
         {showSuccess && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[200] flex items-center justify-center bg-gray-900/60 backdrop-blur-sm px-4"
-          >
+          <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-[300] flex items-center justify-center bg-gray-900/80 backdrop-blur-md px-4" 
+        >
             <motion.div
-              initial={{ scale: 0.8, y: 20 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.8, y: 20 }}
+              key="success-modal"
+              initial={{ scale: 0.8, y: 20, opacity: 0 }}
+              animate={{ scale: 1, y: 0, opacity: 1 }}
+              exit={{ scale: 0.8, y: 20, opacity: 0 }}
               className="bg-white border-2 border-cyan-500 rounded-2xl p-8 max-w-sm w-full text-center shadow-[0_0_50px_rgba(6,182,212,0.3)]"
             >
               <div className="relative mx-auto w-20 h-20 mb-6">
@@ -593,7 +595,7 @@ export default function Portfolio() {
               <motion.div 
                 initial={{ width: 0 }}
                 animate={{ width: "100%" }}
-                transition={{ duration: 2.8 }}
+                transition={{ duration: 4.8 }}
                 className="h-1 bg-cyan-500 mt-6 rounded-full opacity-50"
               />
             </motion.div>
