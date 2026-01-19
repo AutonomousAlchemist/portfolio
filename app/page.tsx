@@ -88,11 +88,22 @@ export default function Portfolio() {
           transition={{ duration: 0.8 }}
           className="z-10 text-center px-4"
         >
-          <div className="mb-6 relative inline-block">
-            <div className="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-cyan-500/50 overflow-hidden mx-auto shadow-[0_0_30px_rgba(6,182,212,0.4)] ring-4 ring-cyan-200/50">
-              <img src="/profile.png" alt="Pavan Kumar S" className="w-full h-full object-cover" />
-            </div>
-          </div>
+         <div className="mb-6 relative inline-block group">
+  {/* The Image Container */}
+  <div className="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-cyan-500/50 overflow-hidden mx-auto shadow-[0_0_30px_rgba(6,182,212,0.4)] ring-4 ring-cyan-200/50 relative">
+    <img 
+      src="/profile.png" 
+      alt="Pavan Kumar S" 
+      className="w-full h-full object-cover object-[center_20%] transition-transform duration-500 group-hover:scale-110" 
+    />
+    
+    {/* Subtle Glass Overlay for a "Screen" feel */}
+    <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/10 to-transparent pointer-events-none" />
+  </div>
+
+  {/* Status Pulse Dot (Optional but fits the robot theme) */}
+  <div className="absolute bottom-2 right-2 w-4 h-4 bg-green-500 border-2 border-slate-900 rounded-full animate-pulse shadow-[0_0_10px_rgba(34,197,94,0.8)]" />
+</div>
           
           <h1 className="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-600 to-blue-600 mb-4">
             {personalInfo.name}
