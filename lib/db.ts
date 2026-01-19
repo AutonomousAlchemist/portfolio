@@ -1,7 +1,7 @@
 import { neon } from '@neondatabase/serverless';
 
 // Pull from the variable you set in Vercel/Local
-const connectionString = process.env.DATABASE_URL || process.env.POSTGRES_URL;
+const connectionString = process.env.DATABASE_URL ;
 
 if (!connectionString) {
   throw new Error("❌ Database URL is missing. Check your environment variables!");
