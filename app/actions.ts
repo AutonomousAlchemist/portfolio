@@ -23,12 +23,23 @@ export async function submitContactForm(formData: FormData): Promise<FormState> 
     };
   }
 
+  // Basic email regex validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return {
+      success: false,
+      message: "Please provide a valid email address."
+    };
+  }
+
   try {
-    // 3. Database Insertion using Neon HTTP
-    await sql`
-      INSERT INTO messages (name, email, message)
-      VALUES (${name}, ${email}, ${message})
-    `;
+    // 3. Database Insertion
+    // Note: Neon's sql helper treats backticks as a single template string.
+    // This syntax is the most robust way to handle parameterized queries.
+    await sql(
+      'INSERT INTO messages (name, email, message) VALUES ($1, $2, $3)',
+      [name, email, message]
+    );
 
     // 4. Refresh the page data if needed
     revalidatePath('/'); 
@@ -39,7 +50,7 @@ export async function submitContactForm(formData: FormData): Promise<FormState> 
     };
 
   } catch (error) {
-    // 5. Detailed error logging for your Vercel console
+    // 5. Detailed error logging for your console
     console.error("Database Error Detail:", error);
     
     return { 
