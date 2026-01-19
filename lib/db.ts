@@ -1,10 +1,11 @@
 import { neon } from '@neondatabase/serverless';
 
-if (!process.env.POSTGRES_URL) {
-  console.error("❌ CRITICAL: POSTGRES_URL is missing from environment variables!");
+const connectionString = process.env.POSTGRES_URL || process.env.DATABASE_URL;
+
+if (!connectionString) {
+  console.error("❌ DB Environment Variable is MISSING");
 }
 
-// We use the '!' to tell TS it's there, but the log above will tell us the truth in the console
-const sql = neon(process.env.POSTGRES_URL!);
+const sql = neon(connectionString!);
 
 export default sql;
