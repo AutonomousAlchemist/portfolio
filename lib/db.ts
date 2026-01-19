@@ -12,5 +12,5 @@ if (connectionString.includes('prisma.io')) {
   throw new Error("❌ You are still using a Prisma URL with a Neon driver!");
 }
 
-const sql = neon(connectionString);
+const sql = neon(process.env.DATABASE_URL!) ;
 export default sql;

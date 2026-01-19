@@ -18,12 +18,13 @@ export async function submitContactForm(formData: FormData): Promise<FormState> 
   }
 
   try {
-    // We use the function call syntax instead of backticks to satisfy the compiler
-    // The Neon driver expects (query_string, [array_of_values])
-    await sql(
-      "INSERT INTO messages (name, email, message) VALUES ($1, $2, $3)",
-      [name, email, message]
-    );
+    // Correct Tagged Template syntax
+    // No parentheses, just backticks. 
+    // The library handles the commas and sanitization automatically.
+    await sql`
+      INSERT INTO messages (name, email, message)
+      VALUES (${name}, ${email}, ${message})
+    `;
 
     revalidatePath('/'); 
 
@@ -33,10 +34,10 @@ export async function submitContactForm(formData: FormData): Promise<FormState> 
     };
 
   } catch (error) {
-    console.error("Database Error Detail:", error);
+    console.error("Database Error:", error);
     return { 
       success: false, 
-      message: "Neural link failed. Please try again." 
+      message: "Database connection failed." 
     };
   }
 }
